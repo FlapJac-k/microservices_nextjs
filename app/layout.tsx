@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./nav/Navbar";
 import { ThemeConfig } from "flowbite-react";
+import ToasterProvider from "./providers/ToasterProvider";
 
 export const metadata: Metadata = {
   title: "Microservices",
@@ -15,15 +16,14 @@ export default function RootLayout({
 }>) {
   return (
     <>
-    <ThemeConfig dark={false} />
-    <html lang="en">
-      <body>
-        <Navbar />
-        <main className="container mx-auto px-5 pt-10">
-          {children}
-        </main>
-      </body>
-    </html>
+      <ThemeConfig dark={false} />
+      <html lang="en">
+        <body>
+          <ToasterProvider />
+          <Navbar />
+          <main className="container mx-auto px-5 pt-10">{children}</main>
+        </body>
+      </html>
     </>
   );
 }
